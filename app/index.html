@@ -26,10 +26,12 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container">
-      <section class="game" ng-controller="MainCtrl">
+    <div class="container" ng-controller="MainCtrl">
+      <section class="menu">
         <p>Attempts: {{game.attempts}}</p>
-        <div class="card-wrapper" ng-repeat="card in game.cards" ng-click="game.flipCard(card)">
+      </section>
+      <section class="game">
+        <div class="card-wrapper" ng-repeat="card in game.cards" ng-click="flipCard(card)">
           <div class="card" ng-class="{flipped: card.flipped}">
             <div class="top"></div>
             <div class="bottom {{card.name}}"></div>
@@ -44,8 +46,9 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/providers/values/cards.js"></script>
+    <script src="scripts/providers/services/sounds.js"></script>
     <script src="scripts/providers/factories/card.js"></script>
-    <script src="scripts/providers/factories/game.js"></script>
+    <script src="scripts/providers/services/deck.js"></script>
     <!-- endbuild -->
   </body>
 </html>
