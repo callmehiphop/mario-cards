@@ -1,0 +1,71 @@
+$cardWidth: 137px;
+$cardHeight: 197px;
+$spriteGap: 54px;
+
+.card-wrapper {
+	float: left;
+	position: relative;
+	margin: 20px 15px;
+	height: $cardHeight;
+	width: $cardWidth;
+	@include perspective(800px);
+
+	.card {
+		width:100%;
+		height:100%;
+		@include transition(transform 1s);
+		@include transform-style(preserve-3d);
+		
+		&.flipped {
+			@include rotateY(180deg);
+		}
+
+		div {
+			width: 100%;
+			height: 100%;
+			background-image: url('../assets/images/cards.png');
+			background-repeat: no-repeat;
+			@include backface-visibility(hidden);
+		}
+
+		.top {
+			background-color: #fff;
+			background-position: -1153px 0;
+		}
+
+		.bottom {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			background-color: #ffbaaa;
+			@include rotateY(180deg);
+
+			&.mushroom {
+				background-position: 0 0;
+			}
+
+			&.flower {
+				background-position: -191px 0;
+			}
+
+			&.star {
+				background-position: -382px 0;
+			}
+
+			&.coins10 {
+				background-position: -573px 0;
+			}
+
+			&.coins20 {
+				background-position: -764px 0;
+			}
+
+			&.freeGuy {
+				background-position: -955px 0;
+			}
+
+		}
+
+	}
+
+}
