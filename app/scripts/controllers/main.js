@@ -1,8 +1,9 @@
 'use strict';
 
-app.controller('MainCtrl', function($scope, $timeout, cards, Deck, Storage) {
+app.controller('MainCtrl', function($scope, $timeout, cards, Deck, Storage, Sounds) {
 
-  var firstPick, secondPick;
+  var flipTime = 800
+    , firstPick, secondPick;
 
   Deck.makeCards(cards);
 
@@ -22,6 +23,8 @@ app.controller('MainCtrl', function($scope, $timeout, cards, Deck, Storage) {
    * @return {void}
    */
   $scope.flipCard = function(card) {
+    var track = 'match';
+
     if (card.flipped || secondPick) {
       return;
     }
@@ -40,7 +43,12 @@ app.controller('MainCtrl', function($scope, $timeout, cards, Deck, Storage) {
 
       if (!$scope.game.unmatchedPairs) {
         checkHighScore();
+        track = 'win';
       }
+
+      $timeout(function() {
+        Sounds.play(track);
+      }, flipTime);
 
       return;
     }
@@ -48,10 +56,11 @@ app.controller('MainCtrl', function($scope, $timeout, cards, Deck, Storage) {
     secondPick = card;
 
     $timeout(function() {
+      Sounds.play('noMatch');
       secondPick.flip();
       firstPick.flip();
       firstPick = secondPick = null;
-    }, 1000);
+    }, flipTime);
   };
 
 
@@ -70,7 +79,7 @@ app.controller('MainCtrl', function($scope, $timeout, cards, Deck, Storage) {
       $scope.game.cards = null;
       Deck.shuffle();
       $scope.game.cards = Deck.cards;
-    }, 800);
+    }, flipTime);
   };
 
 
