@@ -28,8 +28,10 @@
     <!-- Add your site or application content here -->
     <div class="container" ng-controller="MainCtrl">
       <section class="menu">
-        <p>High Score: {{game.highScore}}</p>
         <p>Attempts: {{game.attempts}}</p>
+        <span class="divider">|</span>
+        <p>High Score: {{game.highScore}}</p>
+        <p class="reset" ng-click="reset()">Reset</p>
       </section>
       <section class="game">
         <div class="card-wrapper" ng-repeat="card in game.cards" ng-click="flipCard(card)">
