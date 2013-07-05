@@ -17,7 +17,7 @@ app.service('Deck', function(Card, cards) {
    * the deck
    *
    * @param {array} Deck of cards
-   * @return {void}
+   * @return {array} Shuffled cards
    */
   function shuffle(deck) {
     var shuffled = []
@@ -36,6 +36,7 @@ app.service('Deck', function(Card, cards) {
   /**
    * Flips all cards to default state
    *
+   * @param {array} cards!
    * @return {void}
    */
   function flipAll(deck) {
