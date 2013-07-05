@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('MainCtrl', function($scope, $timeout, cards, Deck) {
+app.controller('MainCtrl', function($scope, $timeout, cards, Deck, Storage) {
 
   var firstPick, secondPick;
 
@@ -9,6 +9,7 @@ app.controller('MainCtrl', function($scope, $timeout, cards, Deck) {
   $scope.game = {
     cards: Deck.cards,
     unmatchedPairs: Deck.cards.length / 2,
+    highScore: Storage.get('highScore') || 0,
     attempts: 0
   };
 
@@ -36,6 +37,11 @@ app.controller('MainCtrl', function($scope, $timeout, cards, Deck) {
     if (card.name === firstPick.name) {
       $scope.game.unmatchedPairs--;
       firstPick = null;
+
+      if (!$scope.game.unmatchedPairs) {
+        checkHighScore();
+      }
+
       return;
     }
 
@@ -66,5 +72,22 @@ app.controller('MainCtrl', function($scope, $timeout, cards, Deck) {
       $scope.game.cards = Deck.cards;
     }, 800);
   };
+
+
+  /**
+   * Checks to see if the number of attempts is less
+   * than the users current high score, if it is then
+   * we store it and update the UI
+   *
+   * @return {void}
+   */
+  function checkHighScore() {
+    var current = $scope.game.highScore;
+
+    if (!current || $scope.game.attempts < current) {
+      Storage.set('highScore', $scope.game.attempts);
+      $scope.game.highScore = $scope.game.attempts;
+    }
+  }
 
 });
