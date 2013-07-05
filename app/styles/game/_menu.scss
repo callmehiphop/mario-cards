@@ -1,0 +1,29 @@
+$fontColor: #fff;
+
+.menu {
+	margin: 20px 0;
+	text-align: center;
+	color: $fontColor;
+  font-family:'Press Start 2P';
+
+	p {
+		display: inline-block;
+		margin: 0 10px;
+	}
+
+	.divider {
+		color: darken($fontColor, 50%);
+	}
+
+	.reset {
+		cursor:pointer;
+		background-color: darken($fontColor, 50%);
+		padding: 10px;
+		@include transition(box-shadow 0.5s);
+
+		&:hover {
+			@include box-shadow(0 0 8px #000 inset);
+		}
+	}
+
+}
