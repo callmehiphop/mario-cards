@@ -8,7 +8,7 @@ app.controller('MainCtrl', function($scope, $timeout, cards, Deck, Storage) {
 
   $scope.game = {
     cards: Deck.cards,
-    unmatchedPairs: Deck.cards.length / 2 ,
+    unmatchedPairs: Deck.cards.length / 2,
     highScore: Storage.get('highScore') || 0,
     attempts: 0
   };
