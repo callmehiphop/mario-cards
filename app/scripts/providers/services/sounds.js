@@ -1,5 +1,6 @@
 'use strict';
 
-app.service('Sounds', function() {
-	//var AudioContext = window.AudioContext || window.webkitAudioContext;
+app.service('Sounds', function(BufferLoader) {
+	var AudioContext = window.AudioContext || window.webkitAudioContext;
+
 });
