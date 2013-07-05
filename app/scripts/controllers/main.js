@@ -1,11 +1,10 @@
 'use strict';
 
-app.controller('MainCtrl', function($scope, $timeout, cards, Deck, Storage, Sounds) {
+app.controller('MainCtrl', function($scope, $timeout, Deck, Storage, Sounds) {
 
   var flipTime = 800
     , firstPick, secondPick;
 
-  Deck.makeCards(cards);
 
   $scope.game = {
     cards: Deck.cards,
@@ -71,13 +70,13 @@ app.controller('MainCtrl', function($scope, $timeout, cards, Deck, Storage, Soun
    * @return {void}
    */
   $scope.reset = function() {
-    Deck.flipAll();
+    Deck.flipAll($scope.game.cards);
     firstPick = secondPick = null;
     $scope.game.attempts = 0;
 
     $timeout(function() {
       $scope.game.cards = null;
-      Deck.shuffle();
+      Deck.shuffle($scope.game.cards);
       $scope.game.cards = Deck.cards;
     }, flipTime);
   };
