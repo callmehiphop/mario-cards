@@ -76,6 +76,7 @@ app.controller('MainCtrl', function($scope, $timeout, Deck, Storage, Sounds) {
 
     $timeout(function() {
       var cards = $scope.game.cards.slice(0);
+      $scope.game.unmatchedPairs = cards.length / 2;
       $scope.game.cards = Deck.shuffle(cards);
     }, flipTime);
   };
