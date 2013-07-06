@@ -19,10 +19,9 @@ $fontColor: #fff;
     cursor:pointer;
     background-color: darken($fontColor, 50%);
     padding: 10px;
-    @include transition(box-shadow 0.5s);
 
     &:hover {
-      @include box-shadow(0 0 8px #000 inset);
+      background-color: darken($fontColor, 35%);
     }
   }
 
