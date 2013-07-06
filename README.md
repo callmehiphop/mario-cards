@@ -13,7 +13,7 @@ Install it by doing the following
 # Use `package.json` to pull down dependencies from npm
 $ npm install
 
-# Use `component.json` to pull down dependencies from bower
+# Use `bower.json` to pull down dependencies from bower
 $ bower install
 ```
 
