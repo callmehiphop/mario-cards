@@ -26,12 +26,11 @@
       <script src="components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
     <div class="container" ng-controller="MainCtrl">
       <section class="menu">
         <p>Attempts: {{game.attempts}}</p>
         <span class="divider">|</span>
-        <p>High Score: {{game.highScore}}</p>
+        <p>Best Score: {{game.highScore}}</p>
         <p class="reset" ng-click="reset()">Reset</p>
       </section>
       <section class="game">
