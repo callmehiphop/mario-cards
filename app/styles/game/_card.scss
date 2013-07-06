@@ -69,3 +69,21 @@ $spriteGap: 54px;
   }
 
 }
+
+.no-csstransforms3d {
+
+  .card {
+
+    .bottom {
+      z-index: -1;
+    }
+
+    &.flipped {
+      .bottom {
+        z-index: 1;
+      }
+    }
+
+  }
+
+}
